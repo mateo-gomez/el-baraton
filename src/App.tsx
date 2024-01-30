@@ -8,6 +8,7 @@ function App() {
 			<h1>El Baratón</h1>
 
 			<Categories />
+			<Products />
 		</>
 	);
 }

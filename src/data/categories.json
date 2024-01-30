@@ -1,0 +1,92 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Bebidas",
+            "sublevels": [
+                {
+                    "id": 2,
+                    "name": "Con azúcar",
+                    "sublevels": [
+                        {
+                            "id": 4,
+                            "name": "Refrescos"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Jugos",
+                            "sublevels": [
+                                {
+                                    "id": 8,
+                                    "name": "Naturales"
+                                },
+                                {
+                                    "id": 9,
+                                    "name": "Concentrados"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Sin azúcar",
+                    "sublevels": [
+                        {
+                            "id": 6,
+                            "name": "Agua"
+                        },
+                        {
+                            "id": 7,
+                            "name": "Té",
+                            "sublevels": [
+                                {
+                                    "id": 10,
+                                    "name": "Negro"
+                                },
+                                {
+                                    "id": 11,
+                                    "name": "Verde"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Snacks",
+            "sublevels": [
+                {
+                    "id": 13,
+                    "name": "Salados",
+                    "sublevels": [
+                        {
+                            "id": 14,
+                            "name": "Papitas"
+                        },
+                        {
+                            "id": 15,
+                            "name": "Frutos secos"
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "name": "Dulces",
+                    "sublevels": [
+                        {
+                            "id": 17,
+                            "name": "Galletas"
+                        },
+                        {
+                            "id": 18,
+                            "name": "Caramelos"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

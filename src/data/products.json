@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Coca-Cola",
+            "sublevel_id": 4,
+            "available": true,
+            "price": "1.00",
+            "stock_quantity": 100
+        },
+        {
+            "id": 2,
+            "name": "Jugo de naranja natural",
+            "sublevel_id": 8,
+            "available": true,
+            "price": "2.50",
+            "stock_quantity": 50
+        },
+        {
+            "id": 3,
+            "name": "Agua mineral",
+            "sublevel_id": 6,
+            "available": true,
+            "price": "0.75",
+            "stock_quantity": 200
+        },
+        {
+            "id": 4,
+            "name": "Papitas saladas",
+            "sublevel_id": 13,
+            "available": true,
+            "price": "1.50",
+            "stock_quantity": 120
+        },
+        {
+            "id": 5,
+            "name": "Galletas de chocolate",
+            "sublevel_id": 17,
+            "available": true,
+            "price": "2.00",
+            "stock_quantity": 80
+        }
+    ]
+}

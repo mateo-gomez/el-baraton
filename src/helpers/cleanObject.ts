@@ -6,7 +6,7 @@ export function cleanObject (data: Record<string, any>) {
     for (const key in data) {
         if (Object.prototype.hasOwnProperty.call(data, key)) {
             const element = data[key];
-            if (element !== null || element !== undefined) {
+            if (element !== null && element !== undefined && element !== '') {
                 cleared[key] = element
             }
         }

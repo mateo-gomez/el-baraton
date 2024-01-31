@@ -2,13 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Filters } from "../Filters";
 
-const initialFilter = {
-	available: true,
-	min_price: "",
-	max_price: "",
-	stock_quantity: "",
-};
-
 const onSubmit = vi.fn();
 
 describe("Filters", () => {
@@ -17,7 +10,7 @@ describe("Filters", () => {
 	});
 
 	it("Should render", () => {
-		render(<Filters onSubmit={onSubmit}/>);
+		render(<Filters onSubmit={onSubmit} />);
 
 		expect(
 			screen.getByRole("checkbox", { name: "Available" })
@@ -45,20 +38,14 @@ describe("Filters", () => {
 		expect(availableFilter).not.toBeChecked();
 		expect(onSubmit).toBeCalledWith({
 			available: true,
-			min_price: "",
-			max_price: "",
-			stock_quantity: "",
 		});
 	});
 
 	it.each([
 		{
-			filters: { available: true, },
+			filters: { available: true },
 			expected: {
 				available: true,
-				min_price: "",
-				max_price: "",
-				stock_quantity: "",
 			},
 		},
 		{
@@ -66,25 +53,19 @@ describe("Filters", () => {
 			expected: {
 				available: true,
 				min_price: "1",
-				max_price: "",
-				stock_quantity: "",
 			},
 		},
 		{
 			filters: { max_price: "2" },
 			expected: {
 				available: true,
-				min_price: "",
 				max_price: "2",
-				stock_quantity: "",
 			},
 		},
 		{
 			filters: { stock_quantity: "1" },
 			expected: {
 				available: true,
-				min_price: "",
-				max_price: "",
 				stock_quantity: "1",
 			},
 		},
@@ -136,11 +117,14 @@ describe("Filters", () => {
 
 		await userEvent.type(minPriceField, filters.min_price || "{backspace}");
 		await userEvent.type(maxPriceField, filters.max_price || "{backspace}");
-		await userEvent.type(quantityField, filters.stock_quantity || "{backspace}");
+		await userEvent.type(
+			quantityField,
+			filters.stock_quantity || "{backspace}"
+		);
 
 		await userEvent.click(screen.getByRole("button", { name: "Filter" }));
 
-		expect(onSubmit).toBeCalledWith(initialFilter);
+		expect(onSubmit).toBeCalledTimes(1)
 		expect(onSubmit).toBeCalledWith(expected);
 	});
 });

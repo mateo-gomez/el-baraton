@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from "react";
+import { ChangeEventHandler, FormEventHandler, useCallback, useState } from "react";
 import { ProductFilters } from "../Products/getProducts";
 import { cleanObject } from "../../helpers/cleanObject";
 
@@ -24,24 +24,21 @@ export function useFilter({onSubmit}: useFilterProps) {
 		stock_quantity: "",
 	});
 
+	const sendFilters = useCallback(() => {
+		onSubmit(parseFilters(filters));
+	}, [filters, onSubmit])
+
 	const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback((event) => {
 		event.preventDefault()
 		sendFilters()
-	}, [filters]);
-
-	const sendFilters = () => {
-		onSubmit(parseFilters(filters));
-	}
-
-	useEffect(() => {
-		sendFilters();
-	}, [filters.available]);
+	}, [sendFilters]);
 
 	const handleCheckChange: ChangeEventHandler<HTMLInputElement> = (event) => {
 		setFilters((prevFilters) => ({
 			...prevFilters,
 			available: event.target.checked,
 		}));
+		sendFilters()
 	};
 
 	const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {

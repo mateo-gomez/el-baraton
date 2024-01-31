@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Product, ProductFilters, getProducts } from "./getProducts"
 
 export function useProducts() {
@@ -6,10 +6,10 @@ export function useProducts() {
     const [shouldRefetch, setShouldRefetch] = useState(false)
     const [filters, setFilters] = useState<ProductFilters>({})
 
-    const doFetch = (filters: ProductFilters = {}) => {
+    const doFetch = useCallback((filters: ProductFilters = {}) => {
         setFilters(filters)
         setShouldRefetch(true)
-    }
+    }, [])
 
     useEffect(() => {
         if (shouldRefetch) {

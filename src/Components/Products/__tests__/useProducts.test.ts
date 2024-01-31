@@ -21,23 +21,30 @@ const availableProducts = [
 	},
 ];
 
+const getProductsMock = vi.spyOn(productsApi, "getProducts")
+
 describe("useProducts", () => {
 	afterEach(() => {
-		vi.clearAllMocks();
+		getProductsMock.mockReset()
 	});
 
-	it("should return products on render", () => {
-		const getProductsMock = vi
-			.spyOn(productsApi, "getProducts")
-			.mockImplementation(() => availableProducts);
-
+	it("should not return products on render", () => {
 		renderHook(useProducts);
 
 		expect(getProductsMock).not.toBeCalled();
 	});
 
+	it("should return all products", async () => {
+		getProductsMock.mockImplementation(() => availableProducts)
+		const {result} = renderHook(useProducts);
+
+		await waitFor(() => result.current.refetch());
+
+		expect(getProductsMock).toBeCalled();
+		expect(result.current.products).toHaveLength(2)
+	});
+
 	it("should call getProducts on call refetch", async () => {
-		const getProductsMock = vi.spyOn(productsApi, "getProducts");
 		const { result } = renderHook(useProducts);
 
 		await waitFor(() => result.current.refetch({ available: false }));

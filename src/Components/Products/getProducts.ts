@@ -1,4 +1,5 @@
 import products from '../../data/products.json'
+import { filterProducts } from '../../helpers/filterProducts'
 
 export interface ProductFilters {
     available?: boolean
@@ -17,9 +18,5 @@ export interface Product {
 }
 
 export function getProducts(filters?: ProductFilters): Product[] {
-    if (filters) {
-        return products.products
-    }
-
-	return products.products;
+	return filterProducts(products.products, filters);
 }

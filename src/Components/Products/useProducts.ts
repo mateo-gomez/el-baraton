@@ -6,7 +6,7 @@ export function useProducts() {
     const [shouldRefetch, setShouldRefetch] = useState(false)
     const [filters, setFilters] = useState<ProductFilters>({})
 
-    const doFetch = (filters: ProductFilters) => {
+    const doFetch = (filters: ProductFilters = {}) => {
         setFilters(filters)
         setShouldRefetch(true)
     }

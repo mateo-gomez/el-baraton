@@ -6,7 +6,7 @@ const initialFilter = {
 	available: true,
 	min_price: "",
 	max_price: "",
-	quantity: "",
+	stock_quantity: "",
 };
 
 const onSubmit = vi.fn();
@@ -47,84 +47,84 @@ describe("Filters", () => {
 			available: true,
 			min_price: "",
 			max_price: "",
-			quantity: "",
+			stock_quantity: "",
 		});
 	});
 
 	it.each([
 		{
-			filters: { min_price: "", max_price: "", quantity: "" },
+			filters: { available: true, },
 			expected: {
 				available: true,
 				min_price: "",
 				max_price: "",
-				quantity: "",
+				stock_quantity: "",
 			},
 		},
 		{
-			filters: { min_price: "1", max_price: "", quantity: "" },
+			filters: { min_price: "1" },
 			expected: {
 				available: true,
 				min_price: "1",
 				max_price: "",
-				quantity: "",
+				stock_quantity: "",
 			},
 		},
 		{
-			filters: { min_price: "", max_price: "2", quantity: "" },
+			filters: { max_price: "2" },
 			expected: {
 				available: true,
 				min_price: "",
 				max_price: "2",
-				quantity: "",
+				stock_quantity: "",
 			},
 		},
 		{
-			filters: { min_price: "", max_price: "", quantity: "1" },
+			filters: { stock_quantity: "1" },
 			expected: {
 				available: true,
 				min_price: "",
 				max_price: "",
-				quantity: "1",
+				stock_quantity: "1",
 			},
 		},
 		{
 			filters: {
 				min_price: "2",
 				max_price: "4",
-				quantity: "2",
+				stock_quantity: "2",
 			},
 			expected: {
 				available: true,
 				min_price: "2",
 				max_price: "4",
-				quantity: "2",
+				stock_quantity: "2",
 			},
 		},
 		{
 			filters: {
 				min_price: "2",
 				max_price: "3",
-				quantity: "0",
+				stock_quantity: "0",
 			},
 			expected: {
 				available: true,
 				min_price: "2",
 				max_price: "3",
-				quantity: "0",
+				stock_quantity: "0",
 			},
 		},
 		{
 			filters: {
 				min_price: "2",
 				max_price: "3",
-				quantity: "5",
+				stock_quantity: "5",
 			},
 			expected: {
 				available: true,
 				min_price: "2",
 				max_price: "3",
-				quantity: "5",
+				stock_quantity: "5",
 			},
 		},
 	])("should filter $expected", async ({ filters, expected }) => {
@@ -136,7 +136,7 @@ describe("Filters", () => {
 
 		await userEvent.type(minPriceField, filters.min_price || "{backspace}");
 		await userEvent.type(maxPriceField, filters.max_price || "{backspace}");
-		await userEvent.type(quantityField, filters.quantity || "{backspace}");
+		await userEvent.type(quantityField, filters.stock_quantity || "{backspace}");
 
 		await userEvent.click(screen.getByRole("button", { name: "Filter" }));
 

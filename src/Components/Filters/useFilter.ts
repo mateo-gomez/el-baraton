@@ -6,7 +6,7 @@ export interface Filters {
 	available: boolean;
 	min_price: string;
 	max_price: string;
-	quantity: number | "";
+	stock_quantity: number | "";
 }
 interface useFilterProps {
 	onSubmit: (filters: ProductFilters) => void
@@ -21,7 +21,7 @@ export function useFilter({onSubmit}: useFilterProps) {
 		available: true,
 		min_price: "",
 		max_price: "",
-		quantity: "",
+		stock_quantity: "",
 	});
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback((event) => {

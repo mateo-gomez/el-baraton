@@ -4,7 +4,7 @@ export interface ProductFilters {
     available?: boolean
     min_price?: string
     max_price?: string
-    quantity?: string
+    stock_quantity?: string
 }
 
 export interface Product {

@@ -43,9 +43,9 @@ export function Filters({onSubmit}: FiltersProps) {
 				Quantity
 				<input
 					type="number"
-					name="quantity"
+					name="stock_quantity"
 					onChange={handleChange}
-					value={filters.quantity}
+					value={filters.stock_quantity}
 				/>
 			</label>
 

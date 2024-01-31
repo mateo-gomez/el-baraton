@@ -28,10 +28,10 @@ describe("useProducts", () => {
 		getProductsMock.mockReset()
 	});
 
-	it("should not return products on render", () => {
+	it("should return products on render", () => {
 		renderHook(useProducts);
 
-		expect(getProductsMock).not.toBeCalled();
+		expect(getProductsMock).toBeCalled();
 	});
 
 	it("should return all products", async () => {
@@ -53,7 +53,7 @@ describe("useProducts", () => {
 			result.current.refetch({ available: true, min_price: "2.00" })
 		);
 
-		expect(getProductsMock).toBeCalledTimes(2);
+		expect(getProductsMock).toBeCalledTimes(3);
 		expect(getProductsMock).toBeCalledWith({ available: false });
 		expect(getProductsMock).toBeCalledWith({
 			available: true,

@@ -3,7 +3,7 @@ import { Product, ProductFilters, getProducts } from "./getProducts"
 
 export function useProducts() {
     const [products, setProducts] = useState<Product[]>([])
-    const [shouldRefetch, setShouldRefetch] = useState(false)
+    const [shouldRefetch, setShouldRefetch] = useState(true)
     const [filters, setFilters] = useState<ProductFilters>({})
 
     const doFetch = useCallback((filters: ProductFilters = {}) => {
